@@ -29,18 +29,18 @@ public class ColorsActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
         ArrayList<Word> arrayList = new ArrayList<Word>();
 
-        arrayList.add(new Word("weṭeṭṭi","red"));
-        arrayList.add(new Word("chokokki","green"));
-        arrayList.add(new Word("ṭakaakki","brown"));
-        arrayList.add(new Word("ṭopoppi","gray"));
-        arrayList.add(new Word("kululli","black"));
-        arrayList.add(new Word("kelelli","white"));
-        arrayList.add(new Word("ṭopiisә","dusty yellow"));
-        arrayList.add(new Word("chiwiiṭә","mustard yellow"));
+        arrayList.add(new Word("weṭeṭṭi","red",R.drawable.color_red));
+        arrayList.add(new Word("chokokki","green",R.drawable.color_green));
+        arrayList.add(new Word("ṭakaakki","brown",R.drawable.color_brown));
+        arrayList.add(new Word("ṭopoppi","gray",R.drawable.color_gray));
+        arrayList.add(new Word("kululli","black",R.drawable.color_black));
+        arrayList.add(new Word("kelelli","white",R.drawable.color_white));
+        arrayList.add(new Word("ṭopiisә","dusty yellow",R.drawable.color_dusty_yellow));
+        arrayList.add(new Word("chiwiiṭә","mustard yellow",R.drawable.color_mustard_yellow));
 
 
 
-        WordAdapter wordAdapter = new WordAdapter(this,arrayList);
+        WordAdapter wordAdapter = new WordAdapter(this,arrayList,R.color.category_colors);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(wordAdapter);
     }
