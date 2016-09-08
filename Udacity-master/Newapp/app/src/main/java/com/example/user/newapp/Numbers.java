@@ -17,6 +17,18 @@ import java.util.ArrayList;
 
 public class Numbers extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+    private MediaPlayer.OnCompletionListener monCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            release();
+        }
+    };
+            private void release(){
+                if(mediaPlayer != null){
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
+            }
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +60,12 @@ public class Numbers extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Word1 word1 = arrayList.get(position);
                     mediaPlayer = MediaPlayer.create(Numbers.this,word1.getAudio_resource_id());
+                    //release media player to play next sound
+                    release();
                     mediaPlayer.start();
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            Toast.makeText(Numbers.this,"I,am done",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    //setup a listner on the media players so that we can stop and release the
+                    //media player once the sound has  finished playing.
+                    mediaPlayer.setOnCompletionListener(monCompletionListener);
                 }
             });
         }

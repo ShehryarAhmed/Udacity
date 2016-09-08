@@ -14,6 +14,18 @@ import java.util.ArrayList;
  */
 public class color extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
+    private MediaPlayer.OnCompletionListener monCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            release();
+        }
+    };
+    private void release(){
+        if(mediaPlayer != null){
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +50,9 @@ public class color extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word1 word1 = arrayList.get(position);
                 mediaPlayer = MediaPlayer.create(color.this,word1.getAudio_resource_id());
+                release();
                 mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(monCompletionListener);
             }
         });
         listView.setAdapter(wordAdapter);
