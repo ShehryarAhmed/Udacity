@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by user on 9/7/2016.
@@ -47,6 +49,12 @@ public class Numbers extends AppCompatActivity {
                     Word1 word1 = arrayList.get(position);
                     mediaPlayer = MediaPlayer.create(Numbers.this,word1.getAudio_resource_id());
                     mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            Toast.makeText(Numbers.this,"I,am done",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
         }
