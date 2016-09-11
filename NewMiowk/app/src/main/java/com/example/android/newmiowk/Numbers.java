@@ -1,5 +1,6 @@
 package com.example.android.newmiowk;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
  * Created by android on 9/9/2016.
  */
 public class Numbers extends AppCompatActivity  {
+    public static final String KEY_NUMBERS = "number_key";
     private MediaPlayer mediaPlayer;
     private MediaPlayer.OnCompletionListener monCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -35,7 +37,11 @@ public class Numbers extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
         {
-            //Creat ArrayList
+
+            Intent ii = getIntent();
+            String s = ii.getStringExtra(KEY_NUMBERS);
+            setTitle(s);
+               //Creat ArrayList
             final ArrayList<ItemInListView> arrayList = new ArrayList<ItemInListView>();
 
             arrayList.add(new ItemInListView("Luuti","One",R.drawable.number_one,R.raw.number_one));

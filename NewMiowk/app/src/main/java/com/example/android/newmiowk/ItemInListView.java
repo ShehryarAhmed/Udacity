@@ -52,5 +52,6 @@ public class ItemInListView {
                 ", audio_resource_id=" + audio_resource_id +
                 '}';
     }
+
 }
 
