@@ -16,17 +16,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".Colors"
-            android:parentActivityName=".MainActivity">
+                  android:parentActivityName=".MainActivity">
+
         </activity>
-
         <activity android:name=".FamilyNames"
-            android:parentActivityName=".MainActivity">
-
+                  android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".Numbers"
-            android:parentActivityName=".MainActivity"/>
+                  android:parentActivityName=".MainActivity">
+        </activity>
         <activity android:name=".Phrases"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -16,10 +16,15 @@ import java.util.ArrayList;
  */
 public class AdapterView extends ArrayAdapter<ItemInListView> {
     private int backgroundcolor = 0;
+
+    private int imagebg = NOIMAGEBGCOLOR;
+    public static final int NOIMAGEBGCOLOR = -1;
     //check Activity and Context
-    AdapterView(Activity context, ArrayList<ItemInListView> item, int bgcolor){
+    AdapterView(Activity context, ArrayList<ItemInListView> item, int bgcolor,int bgimagecolor){
         super(context,0, item);
         backgroundcolor = bgcolor;
+        imagebg = bgimagecolor;
+
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -45,7 +50,17 @@ public class AdapterView extends ArrayAdapter<ItemInListView> {
         }
 
         View textContainer = listitemview.findViewById(R.id.list_item);
+
         int currentColor = ContextCompat.getColor(getContext(),backgroundcolor);
         textContainer.setBackgroundColor(currentColor);
+
+        if(imagebg != -1){
+            View imageviewsetbg = listitemview.findViewById(R.id.image_view);
+            int imagecurrentcolor = ContextCompat.getColor(getContext(),imagebg);
+            imageviewsetbg.setBackgroundColor(imagecurrentcolor);
+        }
+        else{
+
+        }
         return listitemview;
 }}

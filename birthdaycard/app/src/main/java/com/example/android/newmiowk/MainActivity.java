@@ -1,7 +1,8 @@
 package com.example.android.newmiowk;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,26 +14,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        CategoryAdapter adapter = new CategoryAdapter(this,getSupportFragmentManager());
+
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        tabLayout.setupWithViewPager(viewPager);
+
 
         //Numbers
-        final TextView Color = (TextView) findViewById(R.id.color);
+        /*TextView Colors = (TextView) findViewById(R.id.color);
 
-        Color.setOnClickListener(new View.OnClickListener() {
+        Colors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,Colors.class);
-                i.putExtra(Colors.KEY_COLORS,"Colors");
                 startActivity(i);
             }
         });
 
-        final TextView Phrase = (TextView) findViewById(R.id.phrases);
+        TextView Phrases = (TextView) findViewById(R.id.phrases);
 
-        Phrase.setOnClickListener(new View.OnClickListener() {
+        Phrases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,Phrases.class);
-                i.putExtra(Phrases.KEY_PHRASES,"Phrases");
                 startActivity(i);
             }
         });
@@ -42,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,FamilyNames.class);
-                i.putExtra(FamilyNames.KEY_FAMILY,"FamilyNames");
                 startActivity(i);
             }
         });
@@ -52,12 +60,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,Numbers.class);
-                i.putExtra(Numbers.KEY_NUMBERS,"Numbers");
-
                 startActivity(i);
             }
         });
-
+*/
     }
 
 
